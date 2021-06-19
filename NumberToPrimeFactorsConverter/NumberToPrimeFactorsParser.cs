@@ -1,11 +1,11 @@
-﻿using NumberToPrimeFactorsConverter.Extensions;
+﻿using NumberToPrimeFactors.ConsoleApp.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NumberToPrimeFactorsConverter
+namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class NumberToPrimeFactorsParser
 	{

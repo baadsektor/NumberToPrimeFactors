@@ -3,19 +3,21 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace NumberToPrimeFactorsConverter
+namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class NumbersToPrimeFactorsConverter
 	{
-		private const string factorsSeparator = ", ";
 
 		private NumberToPrimeFactorsParser numberToPrimeFactorsParser;
+		private PrimeFactorsStringBuilder primeFactorsStringBuilder;
 
-		public NumbersToPrimeFactorsConverter(NumberToPrimeFactorsParser numberToPrimeFactorsParser)
+		public NumbersToPrimeFactorsConverter(
+			NumberToPrimeFactorsParser numberToPrimeFactorsParser, 
+			PrimeFactorsStringBuilder primeFactorsStringBuilder)
 		{
 			this.numberToPrimeFactorsParser = numberToPrimeFactorsParser;
+			this.primeFactorsStringBuilder = primeFactorsStringBuilder;
 		}
 
 		public void Convert(string inputFile, string outputFile)
@@ -28,8 +30,9 @@ namespace NumberToPrimeFactorsConverter
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
 						Int32.TryParse(currentLine, out int numberToParse);
+
 						List<int> parsedFactors = this.numberToPrimeFactorsParser.Parse(numberToParse);
-						string factorsString = BuildFactorsString(parsedFactors);
+						string factorsString = this.primeFactorsStringBuilder.BuildPrimeFactorsString(parsedFactors);
 
 						Console.WriteLine($"{numberToParse}: {factorsString}");
 
@@ -37,23 +40,6 @@ namespace NumberToPrimeFactorsConverter
 					}
 				}
 			}
-		}
-
-		private string BuildFactorsString(List<int> factors)
-		{
-			StringBuilder stringBuilder = new();
-
-			for (int index = 0; index < factors.Count; index++)
-			{
-				if (index > 0)
-				{
-					stringBuilder.Append(factorsSeparator);
-				}
-
-				stringBuilder.Append(factors[index]);
-			}
-
-			return stringBuilder.ToString();
 		}
 	}
 }

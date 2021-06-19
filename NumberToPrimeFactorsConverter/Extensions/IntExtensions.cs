@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NumberToPrimeFactorsConverter.Extensions
+namespace NumberToPrimeFactors.ConsoleApp.Extensions
 {
 	public static class IntExtensions
 	{
