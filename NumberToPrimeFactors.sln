@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberToPrimeFactors.ConsoleApp", "NumberToPrimeFactorsConverter\NumberToPrimeFactors.ConsoleApp.csproj", "{EC5B0982-3626-48B9-8D4F-E53F38C540BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberToPrimeFactors.Tests", "NumberToPrimeFactorsConverter.Tests\NumberToPrimeFactors.Tests.csproj", "{22F1640A-356A-42A4-9323-C1248E38966E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5B0982-3626-48B9-8D4F-E53F38C540BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5B0982-3626-48B9-8D4F-E53F38C540BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5B0982-3626-48B9-8D4F-E53F38C540BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5B0982-3626-48B9-8D4F-E53F38C540BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F1640A-356A-42A4-9323-C1248E38966E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F1640A-356A-42A4-9323-C1248E38966E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F1640A-356A-42A4-9323-C1248E38966E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F1640A-356A-42A4-9323-C1248E38966E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD4553C2-A20E-48AD-86EE-DFB04CB3D014}
+	EndGlobalSection
+EndGlobal
