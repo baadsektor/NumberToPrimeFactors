@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NumberToPrimeFactors.ConsoleApp
 {
-	public class NumberToPrimeFactorsParser
+	public class NumberToPrimeFactorsParser : INumberToPrimeFactorsParser
 	{
 		private const string factorsSeparator = ", ";
 
@@ -15,7 +15,7 @@ namespace NumberToPrimeFactors.ConsoleApp
 
 		public string Parse(int number)
 		{
-			if (number < 2) 
+			if (number < 2)
 			{
 				return string.Empty;
 			}
