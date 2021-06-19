@@ -1,41 +1,25 @@
-﻿using NumberToPrimeFactors.ConsoleApp;
-using System;
+﻿using System;
 
-namespace NumberToPrimeFactorsConverter
+namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class Program
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine($"Welcome to the Number-To-Prime Factors converter.{Environment.NewLine}");
+			DisplayIntroduction();
+
+			NumberToPrimeFactorsFileConverter converter = new(new NumberToPrimeFactorsParser());
 
 			bool shouldContinue = true;
 			while (shouldContinue)
 			{
-
-				Console.WriteLine("Please enter the file path to convert or type 'exit' to leave the application:");
-
-				string input = Console.ReadLine();
-
-				if (input.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
-				{
-					shouldContinue = false;
-					break;
-				}
-
-				while (!InputValidator.ValidateInput(input))
-				{
-					input = Console.ReadLine();
-				}
-
-				Console.WriteLine("Please enter the destination file path:");
-				string output = Console.ReadLine();
-
-
-				NumbersToPrimeFactorsConverter converter = new (new NumberToPrimeFactorsParser());
 				try
 				{
-					converter.Convert(input, output);
+					string inputFileName = UserInputReader.ReadInputFileName();
+					string outputFileName = UserInputReader.ReadOutputFileName();
+					DirectoryHelper.CreateDirectoryIfDoesNotExist(outputFileName);
+
+					converter.Convert(inputFileName, outputFileName);
 					Console.WriteLine($"Done!{Environment.NewLine}");
 				}
 				catch (Exception ex)
@@ -43,6 +27,13 @@ namespace NumberToPrimeFactorsConverter
 					Console.WriteLine($"ERROR: {ex.Message}");
 				}
 			}
+		}
+
+		private static void DisplayIntroduction()
+		{
+			Console.WriteLine($"Welcome to the Prime Factors converter.{Environment.NewLine}");
+			Console.WriteLine($"This application will read a list of integers and convert them into their prime factors.{Environment.NewLine}");
+			Console.WriteLine($"Type 'exit' to exit the application. While the converter is processing the data, you can always stop it by pressing any key.{Environment.NewLine}");
 		}
 	}
 }
