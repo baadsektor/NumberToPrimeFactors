@@ -31,6 +31,17 @@ namespace NumberToPrimeFactorsConverter.Tests
 		}
 
 		[TestMethod, Owner("jan.scholz")]
+		public void Parse_LargePrimeNumber_Returns_OneFactor()
+		{
+			NumberToPrimeFactorsParser parser = new();
+
+			var actualResult = parser.Parse(4793);
+			var expectedResult = "4793";
+
+			Assert.AreEqual(expectedResult, actualResult);
+		}
+
+		[TestMethod, Owner("jan.scholz")]
 		public void Parse_One_Returns_EmptyList()
 		{
 			NumberToPrimeFactorsParser parser = new();
@@ -41,14 +52,13 @@ namespace NumberToPrimeFactorsConverter.Tests
 		}
 
 		[TestMethod, Owner("jan.scholz")]
-		public void Parse_LargePrimeNumber_Returns_OneFactor()
+		public void Parse_Zero_Returns_EmptyList()
 		{
 			NumberToPrimeFactorsParser parser = new();
 
-			var actualResult = parser.Parse(4793);
-			var expectedResult = "4793";
+			var result = parser.Parse(0);
 
-			Assert.AreEqual(expectedResult, actualResult);
+			Assert.AreEqual(string.Empty, result);
 		}
 	}
 }

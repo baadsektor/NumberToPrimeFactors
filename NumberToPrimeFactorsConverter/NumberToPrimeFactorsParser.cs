@@ -15,6 +15,11 @@ namespace NumberToPrimeFactors.ConsoleApp
 
 		public string Parse(int number)
 		{
+			if (number < 2) 
+			{
+				return string.Empty;
+			}
+
 			this.number = number;
 			StringBuilder result = new();
 
