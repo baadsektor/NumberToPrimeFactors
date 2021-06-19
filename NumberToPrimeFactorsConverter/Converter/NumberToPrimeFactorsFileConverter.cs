@@ -6,11 +6,11 @@ using System.Text;
 
 namespace NumberToPrimeFactors.ConsoleApp
 {
-	public class NumbersToPrimeFactorsConverter
+	public class NumberToPrimeFactorsFileConverter
 	{
-		private NumberToPrimeFactorsParser numberToPrimeFactorsParser;
+		private INumberToPrimeFactorsParser numberToPrimeFactorsParser;
 
-		public NumbersToPrimeFactorsConverter(NumberToPrimeFactorsParser numberToPrimeFactorsParser)
+		public NumberToPrimeFactorsFileConverter(INumberToPrimeFactorsParser numberToPrimeFactorsParser)
 		{
 			this.numberToPrimeFactorsParser = numberToPrimeFactorsParser;
 		}
@@ -19,19 +19,21 @@ namespace NumberToPrimeFactors.ConsoleApp
 		{
 			using (StreamReader reader = new(inputFile))
 			{
-				string currentLine;
-
 				using (StreamWriter writer = new(outputFile))
 				{
+					string currentLine;
+					int numberToParse;
+
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
-						Int32.TryParse(currentLine, out int numberToParse);
+						Int32.TryParse(currentLine, out numberToParse);
 
 						string parsedFactorsString = this.numberToPrimeFactorsParser.Parse(numberToParse);
 
-						Console.WriteLine($"{numberToParse}: {parsedFactorsString}");
-
 						writer.WriteLine(parsedFactorsString);
+						writer.Flush();
+
+						Console.WriteLine($"{currentLine}: {parsedFactorsString}");
 					}
 				}
 			}
