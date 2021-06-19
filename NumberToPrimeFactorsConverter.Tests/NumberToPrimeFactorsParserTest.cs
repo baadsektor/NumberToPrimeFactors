@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NumberToPrimeFactors.ConsoleApp;
 using System.Collections.Generic;
 
 namespace NumberToPrimeFactorsConverter.Tests
@@ -12,10 +13,10 @@ namespace NumberToPrimeFactorsConverter.Tests
 		{
 			NumberToPrimeFactorsParser parser = new();
 
-			var actualResults = parser.Parse(19172);
-			var expectedResults = new List<int> { 2, 2, 4793 };
+			var actualResult = parser.Parse(19172);
+			var expectedResult = "2, 2, 4793";
 
-			CollectionAssert.AreEqual(expectedResults, actualResults);
+			Assert.AreEqual(expectedResult, actualResult);
 		}
 
 		[TestMethod, Owner("jan.scholz")]
@@ -23,10 +24,10 @@ namespace NumberToPrimeFactorsConverter.Tests
 		{
 			NumberToPrimeFactorsParser parser = new();
 
-			var actualResults = parser.Parse(2);
-			var expectedResults = new List<int> { 2 };
+			var actualResult = parser.Parse(2);
+			var expectedResult = "2";
 
-			CollectionAssert.AreEqual(expectedResults, actualResults);
+			Assert.AreEqual(expectedResult, actualResult);
 		}
 
 		[TestMethod, Owner("jan.scholz")]
@@ -34,19 +35,20 @@ namespace NumberToPrimeFactorsConverter.Tests
 		{
 			NumberToPrimeFactorsParser parser = new();
 
-			var results = parser.Parse(1);
+			var result = parser.Parse(1);
 
-			Assert.AreEqual(0, results.Count);
+			Assert.AreEqual(string.Empty, result);
 		}
 
+		[TestMethod, Owner("jan.scholz")]
 		public void Parse_LargePrimeNumber_Returns_OneFactor()
 		{
 			NumberToPrimeFactorsParser parser = new();
 
-			var actualResults = parser.Parse(4793);
-			var expectedResults = new List<int> { 4793 };
+			var actualResult = parser.Parse(4793);
+			var expectedResult = "4793";
 
-			CollectionAssert.AreEqual(expectedResults, actualResults);
+			Assert.AreEqual(expectedResult, actualResult);
 		}
 	}
 }

@@ -32,7 +32,7 @@ namespace NumberToPrimeFactorsConverter
 				string output = Console.ReadLine();
 
 
-				NumbersToPrimeFactorsConverter converter = new(new NumberToPrimeFactorsParser(), new PrimeFactorsStringBuilder());
+				NumbersToPrimeFactorsConverter converter = new (new NumberToPrimeFactorsParser());
 				try
 				{
 					converter.Convert(input, output);

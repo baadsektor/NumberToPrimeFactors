@@ -9,38 +9,40 @@ namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class NumberToPrimeFactorsParser
 	{
+		private const string factorsSeparator = ", ";
+
 		private int number;
 
-		public List<int> Parse(int number)
+		public string Parse(int number)
 		{
 			this.number = number;
-			List<int> results = new();
+			StringBuilder result = new();
 
-			ParseTwos(results);
-			ParseOddFactors(results);
-			ParseRemainingPrimeFactor(results);
+			ParseTwos(result);
+			ParseOddFactors(result);
+			ParseRemainingPrimeFactor(result);
 
-			return results;
+			return result.ToString();
 		}
 
-		private void ParseTwos(List<int> results)
+		private void ParseTwos(StringBuilder result)
 		{
 			int factor = 2;
 			while (this.number.IsDivisibleBy(factor))
 			{
-				results.Add(factor);
+				AppendResult(result, factor);
 				this.number /= factor;
 			}
 		}
 
-		private void ParseOddFactors(List<int> results)
+		private void ParseOddFactors(StringBuilder result)
 		{
 			int oddFactor = 3;
 			while (this.number.MayHaveFactorsEqualOrGreaterThan(oddFactor))
 			{
 				if (this.number.IsDivisibleBy(oddFactor))
 				{
-					results.Add(oddFactor);
+					AppendResult(result, oddFactor);
 					this.number /= oddFactor;
 				}
 				else
@@ -50,17 +52,27 @@ namespace NumberToPrimeFactors.ConsoleApp
 			}
 		}
 
-		private void ParseRemainingPrimeFactor(List<int> results)
+		private void ParseRemainingPrimeFactor(StringBuilder result)
 		{
 			if (this.number > 1)
 			{
-				results.Add(this.number);
+				AppendResult(result, this.number);
 			}
 		}
 
 		private int GetNextOddFactor(int oddFactor)
 		{
 			return oddFactor + 2;
+		}
+
+		private void AppendResult(StringBuilder result, int factor)
+		{
+			if (result.Length != 0)
+			{
+				result.Append(factorsSeparator);
+			}
+
+			result.Append(factor);
 		}
 	}
 }

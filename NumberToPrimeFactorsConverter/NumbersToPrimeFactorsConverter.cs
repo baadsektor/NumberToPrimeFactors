@@ -8,16 +8,11 @@ namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class NumbersToPrimeFactorsConverter
 	{
-
 		private NumberToPrimeFactorsParser numberToPrimeFactorsParser;
-		private PrimeFactorsStringBuilder primeFactorsStringBuilder;
 
-		public NumbersToPrimeFactorsConverter(
-			NumberToPrimeFactorsParser numberToPrimeFactorsParser, 
-			PrimeFactorsStringBuilder primeFactorsStringBuilder)
+		public NumbersToPrimeFactorsConverter(NumberToPrimeFactorsParser numberToPrimeFactorsParser)
 		{
 			this.numberToPrimeFactorsParser = numberToPrimeFactorsParser;
-			this.primeFactorsStringBuilder = primeFactorsStringBuilder;
 		}
 
 		public void Convert(string inputFile, string outputFile)
@@ -25,18 +20,18 @@ namespace NumberToPrimeFactors.ConsoleApp
 			using (StreamReader reader = new(inputFile))
 			{
 				string currentLine;
+
 				using (StreamWriter writer = new(outputFile))
 				{
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
 						Int32.TryParse(currentLine, out int numberToParse);
 
-						List<int> parsedFactors = this.numberToPrimeFactorsParser.Parse(numberToParse);
-						string factorsString = this.primeFactorsStringBuilder.BuildPrimeFactorsString(parsedFactors);
+						string parsedFactorsString = this.numberToPrimeFactorsParser.Parse(numberToParse);
 
-						Console.WriteLine($"{numberToParse}: {factorsString}");
+						Console.WriteLine($"{numberToParse}: {parsedFactorsString}");
 
-						writer.WriteLine(factorsString);
+						writer.WriteLine(parsedFactorsString);
 					}
 				}
 			}
