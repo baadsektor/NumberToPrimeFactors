@@ -26,9 +26,7 @@ namespace NumberToPrimeFactors.ConsoleApp
 
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
-						Int32.TryParse(currentLine, out numberToParse);
-
-						string parsedFactorsString = this.numberToPrimeFactorsParser.Parse(numberToParse);
+						string parsedFactorsString = this.numberToPrimeFactorsParser.Parse(currentLine);
 
 						writer.WriteLine(parsedFactorsString);
 						writer.Flush();

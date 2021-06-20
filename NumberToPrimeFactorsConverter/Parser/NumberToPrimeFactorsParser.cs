@@ -9,23 +9,24 @@ namespace NumberToPrimeFactors.ConsoleApp
 {
 	public class NumberToPrimeFactorsParser : INumberToPrimeFactorsParser
 	{
-		private const string factorsSeparator = ", ";
+		private const char factorsSeparator = ',';
 
-		private int number;
+		private long number;
 
-		public string Parse(int number)
+		public string Parse(string numberString)
 		{
-			if (number < 2)
-			{
-				return string.Empty;
-			}
 
-			this.number = number;
 			StringBuilder result = new();
 
-			ParseTwos(result);
-			ParseOddFactors(result);
-			ParseRemainingPrimeFactor(result);
+			if (long.TryParse(numberString, out long number) && number > 1)
+            {
+				this.number = number;
+
+				ParseTwos(result);
+				ParseOddFactors(result);
+				ParseRemainingPrimeFactor(result);
+
+			}
 
 			return result.ToString();
 		}
@@ -70,7 +71,7 @@ namespace NumberToPrimeFactors.ConsoleApp
 			return oddFactor + 2;
 		}
 
-		private void AppendResult(StringBuilder result, int factor)
+		private void AppendResult(StringBuilder result, long factor)
 		{
 			if (result.Length != 0)
 			{

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace NumberToPrimeFactors.ConsoleApp.Extensions
 {
-	public static class IntExtensions
+	public static class LongExtensions
 	{
-		public static bool IsDivisibleBy(this int dividend, int divisor)
+		public static bool IsDivisibleBy(this long dividend, long divisor)
 		{
 			return dividend % divisor == 0;
 		}
 
-		public static bool MayHaveFactorsEqualOrGreaterThan(this int number, int oddFactor)
+		public static bool MayHaveFactorsEqualOrGreaterThan(this long number, long oddFactor)
 		{
 			return oddFactor * oddFactor <= number;
 		}

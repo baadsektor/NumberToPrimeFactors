@@ -2,6 +2,6 @@
 {
 	public interface INumberToPrimeFactorsParser
 	{
-		string Parse(int number);
+		string Parse(string numberString);
 	}
 }
