@@ -22,7 +22,6 @@ namespace NumberToPrimeFactors.ConsoleApp
 				using (StreamWriter writer = new(outputFile))
 				{
 					string currentLine;
-					int numberToParse;
 
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
