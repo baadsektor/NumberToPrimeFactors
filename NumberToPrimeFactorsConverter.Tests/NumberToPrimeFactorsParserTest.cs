@@ -41,6 +41,15 @@ namespace NumberToPrimeFactorsConverter.Tests
 			Assert.AreEqual(expectedResult, actualResult);
 		}
 
+		[TestMethod, Owner("jan.scholz")]
+		public void Parse_LongMaxValue_Returns_CorrectResult()
+		{
+			NumberToPrimeFactorsParser parser = new();
+			var result = parser.Parse("9223372036854775807");
+
+			Assert.IsTrue(!string.IsNullOrEmpty(result));
+		}
+
 		[TestMethod,Owner("jan.scholz")]
 		public void Parse_One_Returns_EmptyString()
 		{

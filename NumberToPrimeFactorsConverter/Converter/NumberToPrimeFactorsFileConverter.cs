@@ -25,12 +25,14 @@ namespace NumberToPrimeFactors.ConsoleApp
 
 					while (!string.IsNullOrEmpty(currentLine = reader.ReadLine()) && !(Console.KeyAvailable))
 					{
+						Console.Write($"{currentLine}:");
+
 						string parsedFactorsString = this.numberToPrimeFactorsParser.Parse(currentLine);
 
 						writer.WriteLine(parsedFactorsString);
 						writer.Flush();
 
-						Console.WriteLine($"{currentLine}: {parsedFactorsString}");
+						Console.WriteLine(parsedFactorsString);
 					}
 				}
 			}
